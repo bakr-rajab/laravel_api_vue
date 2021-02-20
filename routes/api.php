@@ -14,6 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+    Route::get('/users','Auth\ApiAuthController@index')->name('index.api');
+    Route::post('/login', 'Auth\ApiAuthController@login')->name('login.api');
+    Route::post('/register','Auth\ApiAuthController@register')->name('register.api');
+    Route::post('/logout', 'Auth\ApiAuthController@logout')->name('logout.api');
+
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
+
+    Route::post('/login', 'Auth\ApiAuthController@login')->name('login.api');
+    Route::post('/register','Auth\ApiAuthController@register')->name('register.api');
+    Route::post('/logout', 'Auth\ApiAuthController@logout')->name('logout.api');
+
     return $request->user();
 });
